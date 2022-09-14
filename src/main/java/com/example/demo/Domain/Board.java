@@ -13,17 +13,18 @@ import java.util.Date;
 @Entity
 
 public class Board {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long seq;
 
     private String title;
+    @Column(updatable = false)
+    private String writer;
 
     private String content;
 
-    private String writer;
-
+    @Column(insertable = false, updatable = false, columnDefinition = "date dafault sysdate" )
     private Date createDate;
 
+    @Column(insertable = false, updatable = false, columnDefinition = "number default 0")
     private Long cnt;
 }
